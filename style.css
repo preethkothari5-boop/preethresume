@@ -1,0 +1,174 @@
+/* ===== Variables: warm neutrals, one ink-blue accent, one spacing scale ===== */
+:root {
+  --bg: #FAF8F4;
+  --sheet: #FFFFFF;
+  --text: #1B1D24;
+  --text-soft: #4A4F5C;
+  --outline: #D9D5CC;
+  --accent: #1F3A5F;
+  --accent-hover: #162B47;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 40px;
+  --space-5: 72px;
+  --edge: 24px;
+  --font-head: "Source Serif 4", Georgia, serif;
+  --font-body: "Inter", Arial, sans-serif;
+}
+
+/* ===== Base elements: page, headings, text, links, images ===== */
+* { box-sizing: border-box; }
+html { scroll-padding-top: 72px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 600;
+  line-height: 1.2;
+}
+h1 { margin-bottom: var(--space-3); font-size: clamp(2.5rem, 7vw, 3.75rem); }
+h2 { margin-bottom: var(--space-3); font-size: 1.875rem; }
+h3 { margin-bottom: var(--space-1); font-size: 1.25rem; }
+p { max-width: 70ch; margin: 0 0 var(--space-2); }
+a { color: var(--accent); }
+a:hover { color: var(--accent-hover); }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+img { display: block; max-width: 100%; height: auto; }
+
+/* ===== Layout: centred column and space between sections ===== */
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 var(--edge); }
+section { padding-top: var(--space-5); }
+
+/* ===== Navigation bar (flexbox, stays at the top) ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--outline);
+}
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: var(--space-1) var(--edge);
+}
+.nav-brand {
+  margin-right: auto;
+  font-family: var(--font-head);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.nav-links { display: flex; gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
+.nav-brand, .nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-brand:hover, .nav-link:hover { color: var(--accent); }
+
+/* ===== Buttons: links styled as buttons ===== */
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--sheet);
+  font-weight: 600;
+  text-decoration: none;
+}
+.button:hover { border-color: var(--accent-hover); background: var(--accent-hover); color: var(--sheet); }
+.button-outline { background: transparent; color: var(--accent); }
+.button-outline:hover { border-color: var(--accent); background: var(--accent); color: var(--sheet); }
+.button-row { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); }
+
+/* ===== #hero: introduction text and portrait ===== */
+#hero { padding-top: var(--space-4); }
+#hero .wrap {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--space-4);
+  align-items: center;
+}
+.hero-lead { font-size: 1.25rem; }
+.hero-proof { font-weight: 600; }
+.portrait { justify-self: end; width: 100%; max-width: 320px; }
+
+/* ===== #results: flat cards in a grid ===== */
+.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+.card { padding: var(--space-3); border: 1px solid var(--outline); background: var(--sheet); }
+.card p:last-child { margin-bottom: 0; }
+.card-meta { margin-bottom: var(--space-1); color: var(--text-soft); }
+.card-result { margin-bottom: var(--space-1); font-weight: 600; }
+
+/* ===== #roles and #background: two-column lists ===== */
+.detail-list {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) 2fr;
+  gap: var(--space-3);
+  margin: 0;
+}
+.detail-list dt { font-weight: 600; }
+.detail-list dd { max-width: 70ch; margin: 0; }
+
+/* ===== #resume: paper sheet, one A4 page when printed ===== */
+#resume {
+  width: min(820px, calc(100% - 2 * var(--edge)));
+  margin: var(--space-3) auto 0;
+  padding: var(--space-4);
+  border: 1px solid var(--outline);
+  background: var(--sheet);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+#resume h2 { margin-bottom: var(--space-1); font-size: 1.75rem; }
+#resume h3 { margin: var(--space-3) 0 var(--space-1); font-size: 1.125rem; }
+#resume h4 { margin: var(--space-2) 0 var(--space-1); font-family: var(--font-body); font-size: 0.9375rem; }
+.resume-list { max-width: 70ch; margin: 0; padding: 0; list-style: none; }
+.resume-list li { margin-bottom: var(--space-1); }
+
+/* ===== #contact: final call to action ===== */
+#contact { padding-bottom: var(--space-5); }
+
+/* ===== Screens narrower than 700px ===== */
+@media (max-width: 699px) {
+  :root { --edge: 16px; }
+  section { padding-top: var(--space-4); }
+  .site-header { position: static; }
+  .site-nav { flex-wrap: wrap; }
+  .nav-links { order: 3; width: 100%; gap: var(--space-2); }
+  #hero .wrap, .card-grid, .detail-list { grid-template-columns: 1fr; }
+  .portrait { justify-self: start; }
+  .detail-list { gap: 0; }
+  .detail-list dt { margin-top: var(--space-3); }
+  .detail-list dt:first-child { margin-top: 0; }
+  #resume { padding: var(--space-3); }
+}
+
+/* ===== Print: only the resume, black on white, one A4 page ===== */
+@page { size: A4; margin: 12mm; }
+@media print {
+  body { background: #fff; font-size: 9.5pt; line-height: 1.3; }
+  .screen-only { display: none; }
+  #resume, #resume * { color: #000; }
+  #resume { width: auto; margin: 0; padding: 0; border: 0; font-size: 9.5pt; line-height: 1.3; }
+  #resume h2 { margin-bottom: 2pt; font-size: 18pt; }
+  #resume h3 { margin: 10pt 0 3pt; font-size: 11pt; }
+  #resume h4 { margin: 6pt 0 2pt; font-size: 9.5pt; }
+  #resume p, #resume li { margin-bottom: 3pt; }
+  #resume a { text-decoration: none; }
+}
